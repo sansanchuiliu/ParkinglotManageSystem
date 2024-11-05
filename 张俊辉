@@ -1,0 +1,32 @@
+//导入datetime模块，用于处理日期和时间
+import datetime  # 
+// 初始化Vehicle类，接受车牌号作为参数  
+class Vehicle:  
+    def __init__(self, plate_number):  
+        self.plate_number = plate_number 
+        self.entry_time = None  // 入场时间初始化为None  
+// 初始化ParkingLot类  
+class ParkingLot:  
+    def __init__(self):  
+        self.vehicles = {}  // 用于存储在停车场中的车辆，键为车牌号，值为Vehicle实例  
+        self.rates_per_hour = 5  // 每小时收费5元  
+def enter_vehicle(self, plate_number):  
+//创建新的Vehicle实例
+        vehicle = Vehicle(plate_number)  
+        vehicle.entry_time = datetime.datetime.now()  // 记录当前时间为入场时间  
+        self.vehicles[plate_number] = vehicle  // 将车辆加入停车场  
+        print(f"车辆 {plate_number} 入场，入场时间: {vehicle.entry_time}")  // 输出入场信息  
+  // 车辆出场的方法  
+    def exit_vehicle(self, plate_number):  
+        if plate_number in self.vehicles:  
+            vehicle = self.vehicles.pop(plate_number) // 从停车场中移除该车辆  
+            exit_time = datetime.datetime.now()  // 记录当前时间为出场时间  
+            duration = (exit_time - vehicle.entry_time).seconds / 3600  # 计算停车时长（小时）  
+            cost = self.calculate_cost(duration)  // 根据时长计算停车费用  
+            print(f"车辆 {plate_number} 出场，出场时间: {exit_time}，停车费用: {cost}元")  // 输出出场信息及费用  
+        else:  
+            print(f"车辆 {plate_number} 不在停车场中。")  // 如果车辆不在停车场，输出提示信息  
+//根据停车时间计算费用的方法  
+    def calculate_cost(self, hours):  
+        return max(0, hours) * self.rates_per_hour  // 确保费用不为负  
+def current_vehicle_count(self): 
